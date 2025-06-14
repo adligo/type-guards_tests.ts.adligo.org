@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { Obj } from '@ts.adligo.org/io-obj-and-strings/dist/obj.mjs';
+import { Obj, Strings } from '@ts.adligo.org/type-guards/dist/typeGuards.mjs';
 import { I_Classifiable, I_Equatable, I_Hashable} from '@ts.adligo.org/i_obj/dist/i_obj.mjs';
 import { I_AssertionContext } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import {ApiTrial, SourceFileTrial} from '../../tests4ts.ts.adligo.org/src/trials.mjs';
@@ -28,7 +28,7 @@ export class IsEq implements I_Equatable {
         if (obj == this) {
           return true;
         }
-        if (obj == 'IsEq') {
+        if (obj == 'isEq') {
           return true;
         }
         return false;
