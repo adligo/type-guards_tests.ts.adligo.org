@@ -39,12 +39,12 @@ export class NotEq {
 
 }
 
-export class ObjTrial extends ApiTrial {
-  public static readonly CLAZZ_NAME = 'org.adligo.ts.io-obj-and-strings_tests.ObjTrial';
+export class TypeGuardTrial extends ApiTrial {
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.ObjTrial';
   public static new() {
-      return new ObjTrial();
+      return new TypeGuardTrial();
   }
-  public static readonly testTypeGuards = new Test(ObjTrial.CLAZZ_NAME +
+  public static readonly testTypeGuards = new Test(TypeGuardTrial.CLAZZ_NAME +
     '.testTypeGuards', (ac: I_AssertionContext) => {
     let isEq = new IsEq();
     ac.equals(isEq, isEq, "Same objects should be equal");
@@ -55,7 +55,7 @@ export class ObjTrial extends ApiTrial {
 
   });
   constructor() {
-    super(ObjTrial.CLAZZ_NAME, [ObjTrial.testTypeGuards
+    super(TypeGuardTrial.CLAZZ_NAME, [TypeGuardTrial.testTypeGuards
     ]);
   }
 }

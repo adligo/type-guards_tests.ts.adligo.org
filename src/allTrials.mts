@@ -18,14 +18,14 @@ import { I_Trial } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import { ApiTrial } from '../../tests4ts.ts.adligo.org/src/trials.mjs';
 import { AssertionContext } from '../../tests4ts.ts.adligo.org/src/assertions.mjs';
 import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests4ts.mjs';
-import {ObjTrial} from './typeGuardsTrial.mjs';
+import {TypeGuardTrial} from './typeGuardsTrial.mjs';
 
 export const ALL_TRIAL_MAP: Map<string, I_Trial> = new Map();
 function addTrial(trial: I_Trial) {
   ALL_TRIAL_MAP.set(trial.getName(), trial)
 }
-export const ALL_TRIALS: I_Trial[] = [ObjTrial.new()]
-addTrial(ObjTrial.new());
+export const ALL_TRIALS: I_Trial[] = [TypeGuardTrial.new()]
+addTrial(TypeGuardTrial.new());
 
 
 Object.freeze(ALL_TRIAL_MAP);
