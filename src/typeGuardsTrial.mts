@@ -40,7 +40,7 @@ export class NotEq {
 }
 
 export class TypeGuardTrial extends ApiTrial {
-  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.ObjTrial';
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.TypeGuardTrial';
   public static new() {
       return new TypeGuardTrial();
   }
