@@ -1,0 +1,23 @@
+{
+  "author": "Scott Morgan",
+  "description": "This project contains tests for the static methods in the projects listed in the README.md.",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "lockfileVersion": 3,
+  "name": "@ts.adligo.org/io-obj-and-strings_tests",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adligo/io-obj-and-strings_tests.ts.adligo.org.git"
+  },
+  "scripts": {
+    "tests": "c8 && node ./dist/allTrials.mjs",
+    "testsTs": "bun ./src/allTrials.mts",
+    "build": "tsc",
+    "tsc": "tsc"
+  },
+  "sharedNodeModuleProjectSLinkEnvVar": ["OBJ_NODE_MODULE_SLINK"],
+  "sharedNodeModuleProjectSLinks": ["fab_group_deps.ts.adligo.org"],
+  "type": "module",
+  "version": "0.0.1"
+}
