@@ -8,13 +8,13 @@
     "typescript": "^5.0.4"
   },
   "lockfileVersion": 3,
-  "name": "@ts.adligo.org/io-obj-and-strings_tests",
+  "name": "@ts.adligo.org/type-guards_tests",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adligo/io-obj-and-strings_tests.ts.adligo.org.git"
+    "url": "git+https://github.com/adligo/type-guards_tests.ts.adligo.org.git"
   },
   "scripts": {
-    "tests": "c8 node ./dist/type-guards_tests.ts.adligo.org/src/allTrials.mjs",
+    "tests": "c8 node ./dist/type-guards_tests.ts.adligo.org/src/allTrialsRunner.mjs",
     "testsTs": "bun ./src/allTrials.mts",
     "build": "tsc",
     "buildAndTest": "tsc && c8 node ./dist/type-guards_tests.ts.adligo.org/src/allTrialsRunner.mjs",
