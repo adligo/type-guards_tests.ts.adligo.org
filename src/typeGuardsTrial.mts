@@ -19,7 +19,7 @@
 
 import { Errors, Objs, Strings } from '@ts.adligo.org/type-guards/dist/typeGuards.mjs';
 import { I_Classifiable, I_Equatable, I_Hashable} from '@ts.adligo.org/i_obj/dist/i_obj.mjs';
-import { I_AssertionContext } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
+import { I_AssertionContext, I_Test } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import {ApiTrial, SourceFileTrial} from '../../tests4ts.ts.adligo.org/src/trials.mjs';
 import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests4ts.mjs';
 
@@ -44,8 +44,8 @@ export class TypeGuardTrial extends ApiTrial {
   public static new() {
       return new TypeGuardTrial();
   }
-  public static readonly testObjsEquatableTypeGuards = new Test(TypeGuardTrial.CLAZZ_NAME +
-    '.testTypeGuards', (ac: I_AssertionContext) => {
+  public static readonly TESTS: I_Test[] = [new Test(
+    'testTypeGuards', (ac: I_AssertionContext) => {
     let isEq = new IsEq();
     ac.equals(isEq, isEq, "Same objects should be equal");
     ac.equals(isEq, 'isEq', "Same objects should be equal");
@@ -55,9 +55,8 @@ export class TypeGuardTrial extends ApiTrial {
     
     ac.isTrue(Objs.isEquatable(isEq), "The isEq object should be equatable.");
 
-  });
+  })];
   constructor() {
-    super(TypeGuardTrial.CLAZZ_NAME, [TypeGuardTrial.testObjsEquatableTypeGuards
-    ]);
+    super(TypeGuardTrial.CLAZZ_NAME, TypeGuardTrial.TESTS);
   }
 }
