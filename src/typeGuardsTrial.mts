@@ -21,7 +21,7 @@ import { Errors, Objs, Strings } from '@ts.adligo.org/type-guards/dist/typeGuard
 import { I_Classifiable, I_Equatable, I_Hashable} from '@ts.adligo.org/i_obj/dist/i_obj.mjs';
 import { I_AssertionContext, I_Test } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import {ApiTrial, SourceFileTrial} from '../../tests4ts.ts.adligo.org/src/trials.mjs';
-import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests4ts.mjs';
+import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests.mjs';
 
 export class IsEq implements I_Equatable {
     equals(obj: any): boolean {
@@ -41,9 +41,7 @@ export class NotEq {
 
 export class TypeGuardTrial extends ApiTrial {
   public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.TypeGuardTrial';
-  public static new() {
-      return new TypeGuardTrial();
-  }
+
   public static readonly TESTS: I_Test[] = [new Test(
     'testTypeGuards', (ac: I_AssertionContext) => {
     let isEq = new IsEq();
