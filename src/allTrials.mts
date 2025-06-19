@@ -18,7 +18,7 @@ import { I_Trial } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import { ApiTrial } from '../../tests4ts.ts.adligo.org/src/trials.mjs';
 import { AssertionContext } from '../../tests4ts.ts.adligo.org/src/assertions.mjs';
 import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests.mjs';
-import {TypeGuardTrial} from './typeGuardsTrial.mjs';
+import {ErrorsTrial, TypeGuardTrial} from './typeGuardsTrials.mjs';
 
 export const ALL_TRIAL_MAP: Map<string, I_Trial> = new Map();
 function addTrial(trials: I_Trial[]) {
@@ -26,7 +26,7 @@ function addTrial(trials: I_Trial[]) {
     ALL_TRIAL_MAP.set(trial.getName(), trial);
   }
 }
-export const ALL_TRIALS: I_Trial[] = [new TypeGuardTrial()]
+export const ALL_TRIALS: I_Trial[] = [new ErrorsTrial(), new TypeGuardTrial()]
 addTrial(ALL_TRIALS);
 
 
