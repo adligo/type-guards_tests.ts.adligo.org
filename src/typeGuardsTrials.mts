@@ -35,6 +35,18 @@ export class IsEq implements I_Equatable {
     }
 }
 
+export class IsEq2 {
+    equals(obj: any): boolean {
+        if (obj == this) {
+          return true;
+        }
+        if (obj == 'isEq2') {
+          return true;
+        }
+        return false;
+    }
+}
+
 export class NotEq {
 
 }
@@ -155,6 +167,7 @@ export class ObjsTrial extends ApiTrial {
 
   testIsEquatableSuccess(ac: I_AssertionContext) {
     ac.isTrue(Objs.isEquatable(new IsEq()), "An IsEq object should be equatable");
+    ac.isTrue(Objs.isEquatable(new IsEq2()), "An IsEq object should be equatable");
   }
 
   testIsHashableFailures(ac: I_AssertionContext) {
