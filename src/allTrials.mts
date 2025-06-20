@@ -18,15 +18,24 @@ import { I_Trial } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import { ApiTrial } from '../../tests4ts.ts.adligo.org/src/trials.mjs';
 import { AssertionContext } from '../../tests4ts.ts.adligo.org/src/assertions.mjs';
 import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests.mjs';
-import {ErrorsTrial, TypeGuardTrial} from './typeGuardsTrials.mjs';
+import {ErrorsTrial, MapsTrial, ObjsTrial, 
+  //SetsTrial, //wait for 2026
+  StringsTrial, TypeGuardTrial} from './typeGuardsTrials.mjs';
 
 export const ALL_TRIAL_MAP: Map<string, I_Trial> = new Map();
 function addTrial(trials: I_Trial[]) {
   for (let trial of trials) {
-    ALL_TRIAL_MAP.set(trial.getName(), trial);
+    ALL_TRIAL_MAP.set((trial as any).getName(), trial);
   }
 }
-export const ALL_TRIALS: I_Trial[] = [new ErrorsTrial(), new TypeGuardTrial()]
+export const ALL_TRIALS: I_Trial[] = [
+  new ErrorsTrial(), 
+  new MapsTrial(), 
+  new ObjsTrial(), 
+  //new SetsTrial(), //wait for 2026 
+  new StringsTrial(), 
+  new TypeGuardTrial()
+]
 addTrial(ALL_TRIALS);
 
 

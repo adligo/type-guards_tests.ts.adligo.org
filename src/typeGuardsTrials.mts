@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { Errors, Objs, Strings } from '@ts.adligo.org/type-guards/dist/typeGuards.mjs';
+import { Errors, isNil, Maps, Objs, Sets, Strings } from '@ts.adligo.org/type-guards/dist/typeGuards.mjs';
 import { I_Classifiable, I_Equatable, I_Hashable} from '@ts.adligo.org/i_obj/dist/i_obj.mjs';
 import { I_AssertionContext, I_Test } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import {ApiTrial, SourceFileTrial} from '../../tests4ts.ts.adligo.org/src/trials.mjs';
@@ -106,20 +106,150 @@ export class ErrorsTrial extends ApiTrial /* todo change to a SourceFileTrial */
   }
 }
 
+
+export class MapsTrial extends ApiTrial {
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.MapsTrial';
+
+  testIsMapFailures(ac: I_AssertionContext) {
+    ac.isFalse(Maps.isMap(null), "A null should not be a Map");
+    ac.isFalse(Maps.isMap(undefined), "A undefined should not be a Map");
+    ac.isFalse(Maps.isMap({}), "A new empty Object should not be a Map");
+    ac.isFalse(Maps.isMap([]), "An array should not be a Map");
+    ac.isFalse(Maps.isMap(123), "A number should not be a Map");
+    ac.isFalse(Maps.isMap("string"), "A string should not be a Map");
+  }
+
+  testIsMapSuccess(ac: I_AssertionContext) {
+    ac.isTrue(Maps.isMap(new Map()), "A new Map should be a Map");
+    let map = new Map();
+    map.set("key", "value");
+    ac.isTrue(Maps.isMap(map), "A Map with entries should be a Map");
+  }
+
+  constructor() {
+    super(MapsTrial.CLAZZ_NAME);
+  }
+}
+
+export class ObjsTrial extends ApiTrial {
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.ObjsTrial';
+
+  testIsClassifiableFailures(ac: I_AssertionContext) {
+    ac.isFalse(Objs.isClassifiable(null), "A null should not be classifiable");
+    ac.isFalse(Objs.isClassifiable(undefined), "A undefined should not be classifiable");
+    ac.isFalse(Objs.isClassifiable({}), "A new empty Object should not be classifiable");
+    ac.isFalse(Objs.isClassifiable(123), "A number should not be classifiable");
+  }
+
+  testIsClassifiableSuccess(ac: I_AssertionContext) {
+    let classifiable = { getClass: () => "TestClass" };
+    ac.isTrue(Objs.isClassifiable(classifiable), "An object with getClass method should be classifiable");
+  }
+
+  testIsEquatableFailures(ac: I_AssertionContext) {
+    ac.isFalse(Objs.isEquatable(null), "A null should not be equatable");
+    ac.isFalse(Objs.isEquatable(undefined), "A undefined should not be equatable");
+    ac.isFalse(Objs.isEquatable({}), "A new empty Object should not be equatable");
+    ac.isFalse(Objs.isEquatable(123), "A number should not be equatable");
+  }
+
+  testIsEquatableSuccess(ac: I_AssertionContext) {
+    ac.isTrue(Objs.isEquatable(new IsEq()), "An IsEq object should be equatable");
+  }
+
+  testIsHashableFailures(ac: I_AssertionContext) {
+    ac.isFalse(Objs.isHashable(null), "A null should not be hashable");
+    ac.isFalse(Objs.isHashable(undefined), "A undefined should not be hashable");
+    ac.isFalse(Objs.isHashable({}), "A new empty Object should not be hashable");
+    ac.isFalse(Objs.isHashable(123), "A number should not be hashable");
+  }
+
+  testIsHashableSuccess(ac: I_AssertionContext) {
+    let hashable = { hashCode: () => 42 };
+    ac.isTrue(Objs.isHashable(hashable), "An object with hashCode method should be hashable");
+  }
+
+  constructor() {
+    super(ObjsTrial.CLAZZ_NAME);
+  }
+}
+
+export class SetsTrial extends ApiTrial {
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.SetsTrial';
+/* wait for 2026
+  testIsSetFailures(ac: I_AssertionContext) {
+    ac.isFalse(Sets.isSet(null), "A null should not be a Set");
+    ac.isFalse(Sets.isSet(undefined), "A undefined should not be a Set");
+    ac.isFalse(Sets.isSet({}), "A new empty Object should not be a Set");
+    ac.isFalse(Sets.isSet([]), "An array should not be a Set");
+    ac.isFalse(Sets.isSet(123), "A number should not be a Set");
+    ac.isFalse(Sets.isSet("string"), "A string should not be a Set");
+  }
+
+  testIsSetSuccess(ac: I_AssertionContext) {
+    ac.isTrue(Sets.isSet(new Set()), "A new Set should be a Set");
+    let set = new Set();
+    set.add("value");
+    ac.isTrue(Sets.isSet(set), "A Set with entries should be a Set");
+  }
+*/
+  constructor() {
+    super(SetsTrial.CLAZZ_NAME);
+  }
+}
+
+export class StringsTrial extends ApiTrial {
+  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.StringsTrial';
+
+  testIsI_StringFailures(ac: I_AssertionContext) {
+    ac.isFalse(Strings.isI_String(null), "A null should not be an I_String");
+    ac.isFalse(Strings.isI_String(undefined), "A undefined should not be an I_String");
+    ac.isFalse(Strings.isI_String({}), "A new empty Object should not be an I_String");
+    ac.isFalse(Strings.isI_String(123), "A number should not be an I_String");
+    ac.isFalse(Strings.isI_String("string"), "A regular string should not be an I_String");
+  }
+
+  testIsI_StringSuccess(ac: I_AssertionContext) {
+    let iString = { 
+      hasToStringOverride: () => true, 
+      toString: () => "test string" 
+    };
+    ac.isTrue(Strings.isI_String(iString), "An object with I_String methods should be an I_String");
+  }
+
+  testIsNamedFailures(ac: I_AssertionContext) {
+    ac.isFalse(Strings.isNamed(null), "A null should not be named");
+    ac.isFalse(Strings.isNamed(undefined), "A undefined should not be named");
+    ac.isFalse(Strings.isNamed({}), "A new empty Object should not be named");
+    ac.isFalse(Strings.isNamed(123), "A number should not be named");
+  }
+
+  testIsNamedSuccess(ac: I_AssertionContext) {
+    let named = { getName: () => "TestName" };
+    ac.isTrue(Strings.isNamed(named), "An object with getName method should be named");
+  }
+
+  constructor() {
+    super(StringsTrial.CLAZZ_NAME);
+  }
+}
+
 export class TypeGuardTrial extends ApiTrial {
   public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.TypeGuardTrial';
 
-  testTypeGuards(ac: I_AssertionContext) {
-    let isEq = new IsEq();
-    ac.equals(isEq, isEq, "Same objects should be equal");
-    ac.equals(isEq, 'isEq', "Same objects should be equal");
-    ac.notSame(isEq, 'isEq', "These should NOT be the same.")
-    let isEq2  = new IsEq();
-    ac.notEquals(isEq, isEq2, "These should not be equal");
-    
-    ac.isTrue(Objs.isEquatable(isEq), "The isEq object should be equatable.");
+  testIsNilFailures(ac: I_AssertionContext) {
+    ac.isFalse(isNil(0), "Zero should not be nil");
+    ac.isFalse(isNil(false), "False should not be nil");
+    ac.isFalse(isNil(""), "Empty string should not be nil");
+    ac.isFalse(isNil({}), "Empty object should not be nil");
+    ac.isFalse(isNil([]), "Empty array should not be nil");
   }
-  
+
+  testIsNilSuccess(ac: I_AssertionContext) {
+    ac.isTrue(isNil(null), "Null should be nil");
+    ac.isTrue(isNil(undefined), "Undefined should be nil");
+  }
+
   constructor() {
     super(TypeGuardTrial.CLAZZ_NAME);
   }
