@@ -21,6 +21,8 @@ import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests.mjs';
 import {ErrorsTrial, MapsTrial, ObjsTrial, 
   //SetsTrial, //wait for 2026
   StringsTrial, TypeGuardTrial} from './typeGuardsTrials.mjs';
+import {SetsTrial} from './setsTrial.mjs';
+
 
 export const ALL_TRIAL_MAP: Map<string, I_Trial> = new Map();
 function addTrial(trials: I_Trial[]) {
@@ -32,7 +34,7 @@ export const ALL_TRIALS: I_Trial[] = [
   new ErrorsTrial(), 
   new MapsTrial(), 
   new ObjsTrial(), 
-  //new SetsTrial(), //wait for 2026 
+  new SetsTrial(),
   new StringsTrial(), 
   new TypeGuardTrial()
 ]

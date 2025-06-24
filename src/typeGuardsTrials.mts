@@ -22,6 +22,7 @@ import { I_Classifiable, I_Equatable, I_Hashable} from '@ts.adligo.org/i_obj/dis
 import { I_AssertionContext, I_Test } from '../../i_tests4ts.ts.adligo.org/src/i_tests4ts.mjs';
 import {ApiTrial, SourceFileTrial} from '../../tests4ts.ts.adligo.org/src/trials.mjs';
 import { Test, TestParams } from '../../tests4ts.ts.adligo.org/src/tests.mjs';
+import {setMockWithAllMethods} from './mockSet.mjs';
 
 export class IsEq implements I_Equatable {
     equals(obj: any): boolean {
@@ -184,30 +185,6 @@ export class ObjsTrial extends ApiTrial {
 
   constructor() {
     super(ObjsTrial.CLAZZ_NAME);
-  }
-}
-
-export class SetsTrial extends ApiTrial {
-  public static readonly CLAZZ_NAME = 'org.adligo.ts.type-guards.SetsTrial';
-/* wait for 2026
-  testIsSetFailures(ac: I_AssertionContext) {
-    ac.isFalse(Sets.isSet(null), "A null should not be a Set");
-    ac.isFalse(Sets.isSet(undefined), "A undefined should not be a Set");
-    ac.isFalse(Sets.isSet({}), "A new empty Object should not be a Set");
-    ac.isFalse(Sets.isSet([]), "An array should not be a Set");
-    ac.isFalse(Sets.isSet(123), "A number should not be a Set");
-    ac.isFalse(Sets.isSet("string"), "A string should not be a Set");
-  }
-
-  testIsSetSuccess(ac: I_AssertionContext) {
-    ac.isTrue(Sets.isSet(new Set()), "A new Set should be a Set");
-    let set = new Set();
-    set.add("value");
-    ac.isTrue(Sets.isSet(set), "A Set with entries should be a Set");
-  }
-*/
-  constructor() {
-    super(SetsTrial.CLAZZ_NAME);
   }
 }
 
