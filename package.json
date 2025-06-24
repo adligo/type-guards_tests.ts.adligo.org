@@ -21,7 +21,7 @@
     "tsc": "tsc"
   },
   "sharedNodeModuleProjectSLinkEnvVar": ["OBJ_NODE_MODULE_SLINK"],
-  "sharedNodeModuleProjectSLinks": ["fab_group_deps.ts.adligo.org"],
+  "sharedNodeModuleProjectSLinks": ["fab_group_deps.ts.adligo.org", "slink_group_deps.ts.adligo.org"],
   "type": "module",
   "version": "0.0.1"
 }
